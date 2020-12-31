@@ -1,0 +1,99 @@
+<style>
+    #tcb_landing_page h3 {
+        font-family: Hind;
+        font-weight: 400;
+        color: #3569b4;
+        font-size: 30px;
+        line-height: 1.3em;
+        text-align: center;
+        }
+    .button {
+      display: inline-block;
+      padding: 15px 25px;
+      font-size: 24px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+    }
+    
+    .button:hover {background-color: #3e8e41}
+    
+    .button:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <form action="https://lp.soraya.ma/order/add-mr.php" method="post" style="border-radius: 5px;;padding:20px;border:5px solid #e9fdff" id="leformulaire">
+                                          <input type="hidden" id="can_be_submitted" value="1">
+                        <input type="hidden" name="token" value="4011708323">
+        
+        <div class="col-md-12 text-center pb-2">
+      <h1 style="color:#000000; font-size:35px">اطلب الأن</h1>
+    </div>
+        <div class="form-group">
+        <label for="pays">Pays - البلد</label>
+        <select class="form-control" name="pays" id="pays">
+          <option value="Maroc" selected="">المغرب</option>
+          <option value="Hors Maroc">خارج المغرب</option>
+        </select>
+      </div>
+        <div class="form-group">
+        <label for="produit">Produit</label>
+        <select class="form-control" name="product" id="product">
+          <option value="37757729046719" data-prix="Montant : 399 DH + 50 de Livraison">كريم الوجه + قناع الوجه</option>
+          <option value="37757734584511" data-prix="Montant : 599 DH Livraison Gratuite">كريم الوجه + قناع الوجه + جل منظف</option>
+          <option value="37701960040639" data-prix="Montant : 799 DH Livraison Gratuite" selected="">مجموعة ماجيك روتين
+    </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="nom">Nom Complet</label>
+        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="الاسم الكامل" required="">
+      </div>
+      <div class="form-group">
+        <label for="tel">Tél</label>
+        <input type="tel" class="form-control" name="phone" id="phone" placeholder="الهاتف" required="">
+      </div>
+      <div class="form-group">
+        <label for="ville">Ville</label>
+        <input type="text" class="form-control" name="city" id="city" placeholder="المدينة" rows="3" required="">
+      </div>
+      <div class="form-group">
+        <label for="adresse2">adresse</label>
+        <textarea class="form-control" name="address1" id="address1" placeholder="العنوان" rows="3" required=""></textarea>
+      </div>
+    
+        <div style="background: #e9fdff;
+        color: #000000;
+        padding-top: 13px;
+        margin-bottom: 16px;">
+          <h3 id="showPrix">Montant : 799 DH Livraison Gratuite</h3>
+        </div>
+      <div class="col-md-12 text-center zp">
+          <button type="submit" id="commander" style="padding: 10px;" class="button tcb-button-text thrv-inline-text">أحصل عليه الآن</button>
+      </div>
+        
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function() {
+        $('#product').change(function() {
+            var prix = $('#product').find(':selected').data('prix');
+            $("#showPrix").text(prix);
+        });
+          $('#pays').change(function() {
+        if($("#pays option:selected").val() == "Hors Maroc"){
+            window.location.replace("https://www.soraya.ma");
+        }
+        });
+    });
+    </script>
